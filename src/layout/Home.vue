@@ -57,7 +57,7 @@ export default {
 .el-aside {
   line-height: 200px;
   height: 100%;
-  background-color: #304156;
+  background-color: #313743;
 }
 
 .el-main {

@@ -9,9 +9,9 @@
             :collapse="isCollapse"
             :default-active="this.$route.path"
             :collapse-transition="false"
-            background-color="#304156"
+            background-color="#313743"
             text-color="#fff"
-            active-text-color="#5a9cf8"
+            active-text-color="#409eff"
             router
         >
           <el-menu-item
