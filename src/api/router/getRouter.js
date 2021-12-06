@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getMenu() {
+export function getRouter() {
     return request({
-        url: '/sys/getmenu',
+        url: '/sys/getrouter',
         method: 'get',
     })
 }

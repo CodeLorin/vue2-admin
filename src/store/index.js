@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import persistedState from 'vuex-persistedstate'
-import {getMenu} from "@/api/menu/getmenu";
+import {getRouter} from "@/api/router/getRouter";
 
 Vue.use(Vuex)
 
@@ -70,7 +70,7 @@ export default new Vuex.Store({
     },
     actions: {
         async setRouterList(context) {
-            const {data} = await getMenu()
+            const {data} = await getRouter()
             context.commit('setMenuList', data.menu);
             context.commit('setPermList', data.authorization)
         },
