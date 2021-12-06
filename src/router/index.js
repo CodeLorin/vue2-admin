@@ -19,7 +19,7 @@ const routes = [
                 path: '/home',
                 name: 'Home',
                 meta: {
-                    title: '首页'
+                    title: '系统首页'
                 },
                 component: () => import('../views/home/Index')
             },
@@ -37,6 +37,9 @@ const routes = [
     {
         path: "/login",
         name: "Login",
+        meta: {
+            title: '系统登录'
+        },
         component: () => import('../views/Login')
     },
 
@@ -53,6 +56,8 @@ import {Message} from "element-ui";
 
 const router = createRouter()
 router.beforeEach((to, from, next) => {
+    // set title
+    window.document.title = to.meta.title;
     NProgress.start();
     if (to.path === '/login') {
         next()
