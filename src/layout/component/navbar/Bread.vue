@@ -1,7 +1,7 @@
 <template>
   <el-breadcrumb separator="/" class="bread-container">
     <el-breadcrumb-item v-for="item of breadcrumbList" :key="item.path">
-      <span>{{ item.name }}</span>
+      <span>{{ item.meta.title }}</span>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
@@ -16,12 +16,7 @@ export default {
   },
   created() {
     //替换面包屑导航
-    let matched = this.$route.matched.filter(item => item.name);
-    // const first = matched[0];
-    // if (first && first.name !== "首页") {
-    //   matched = [{path: "/", name: "首页"}].concat(matched);
-    // }
-    this.breadcrumbList = matched;
+    this.breadcrumbList = this.$route.matched;
   }
 }
 </script>

@@ -12,7 +12,7 @@
           {{ item.name }}
           <i
               class="el-icon-close"
-              v-if="item.path != '/'"
+              v-if="item.path !== '/'"
               @click.stop="removeTab(item)"/>
         </span>
       </div>

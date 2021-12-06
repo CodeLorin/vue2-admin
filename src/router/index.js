@@ -4,24 +4,31 @@ import NProgress from 'nprogress'
 import store from '@/store'
 
 Vue.use(VueRouter)
-import Layout from "../layout/Home";
-import Home from "../views/home/Index";
 
 const routes = [
     {
         path: '/',
         name: 'lorin',
-        component: Layout,
+        meta: {
+            title: 'lorin'
+        },
+        component: () => import('../layout/Home'),
         redirect: '/home',
         children: [
             {
                 path: '/home',
-                name: '首页',
-                component: Home
+                name: 'Home',
+                meta: {
+                    title: '首页'
+                },
+                component: () => import('../views/home/Index')
             },
             {
                 path: '/usercenter',
-                name: '个人中心',
+                meta: {
+                    title: '个人中心'
+                },
+                name: 'UserCenter',
                 component: () => import('../views/usercenter/Index.vue')
             },
 

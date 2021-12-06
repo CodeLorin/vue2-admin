@@ -18,14 +18,14 @@ export default new Vuex.Store({
     mutations: {
         // 保存标签
         saveTab(state, tab) {
-            if (state.tabList.findIndex(item => item.path === tab.path) == -1) {
-                state.tabList.push({name: tab.name, path: tab.path});
+            if (state.tabList.findIndex(item => item.path === tab.path) === -1) {
+                state.tabList.push({name: tab.meta.title, path: tab.path});
             }
         },
         // 移除标签
         removeTab(state, tab) {
             if (tab.name !== "首页") {
-                var index = state.tabList.findIndex(item => item.name === tab.name);
+                let index = state.tabList.findIndex(item => item.path === tab.path);
                 state.tabList.splice(index, 1);
             }
         },

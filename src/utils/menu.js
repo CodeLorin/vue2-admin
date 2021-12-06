@@ -1,6 +1,7 @@
 import {getMenu} from "@/api/menu/getmenu";
 import router from "../router";
 import store from '../store'
+
 export const initMenu = () => {
     getMenu().then(res => {
 
@@ -26,10 +27,11 @@ export const initMenu = () => {
 }
 const menuToRoute = (menu) => {
     let route = {
-        name: menu.title,
+        name: menu.name,
         path: menu.path,
         meta: {
             icon: menu.icon,
+            title: menu.title
         },
     }
     route.component = () => import(`@/views/${menu.component}`)
