@@ -1,9 +1,9 @@
-import {getMenu} from "@/api/menu/getmenu";
+import {getRouter} from "@/api/router/getRouter";
 import router from "../router";
 import store from '../store'
 
 export const initMenu = () => {
-    getMenu().then(res => {
+    getRouter().then(res => {
 
         if (res.data) {
             res.data.menu.forEach(menu => {

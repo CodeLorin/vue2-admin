@@ -241,7 +241,7 @@
 <script>
 import captcha_config from "../assets/config/captcha";
 import {login} from "../api/user/login";
-import {initMenu} from "../utils/menu";
+import {initMenu} from "../utils/addRouter";
 
 
 export default {

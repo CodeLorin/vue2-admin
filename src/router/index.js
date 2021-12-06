@@ -50,7 +50,7 @@ const createRouter = () =>
         scrollBehavior: () => ({y: 0}),
         routes
     })
-import {initMenu} from '@/utils/menu'
+import {initMenu} from '@/utils/addRouter'
 import {Message} from "element-ui";
 
 
