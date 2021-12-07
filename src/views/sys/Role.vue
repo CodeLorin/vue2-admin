@@ -79,7 +79,7 @@
               </el-popconfirm>
             </el-tooltip>
             <el-tooltip effect="dark" content="分配权限" placement="top" :enterable="false">
-              <el-button type="warning" size="mini" round icon="el-icon-setting" @click=""
+              <el-button type="warning" size="mini" round icon="el-icon-setting" @click="handlerShowPerm(scope.row.id)"
               >
               </el-button>
             </el-tooltip>
@@ -127,6 +127,30 @@
         <el-button type="primary" @click="submitForm" round>确 定</el-button>
       </div>
     </el-dialog>
+    <el-dialog
+        title="分配权限"
+        :visible.sync="permDialogVisible"
+        width="600px">
+      <el-form :model="permForm" ref="permForm">
+
+        <el-tree
+            :data="permTreeData"
+            show-checkbox
+            ref="permTree"
+            :default-expand-all=true
+            node-key="id"
+            :check-strictly=true
+            :props="defaultProps">
+        </el-tree>
+
+      </el-form>
+
+      <span slot="footer" class="dialog-footer">
+			    <el-button @click="permDialogVisible = false">取 消</el-button>
+			    <el-button type="primary" @click="handlerSubmitPerm()">确 定</el-button>
+			</span>
+
+    </el-dialog>
   </div>
 </template>
 
@@ -136,6 +160,8 @@ import {addRole} from "@/api/sys/role";
 import {updateRole} from "@/api/sys/role";
 import {deleteRole} from "@/api/sys/role";
 import {roleInfo} from "@/api/sys/role";
+import {handlerPerm} from "@/api/sys/role";
+import {menuList} from "@/api/sys/menu";
 
 export default {
   name: "Role",
@@ -165,12 +191,22 @@ export default {
           {required: true, message: '请选择角色状态', trigger: 'blur'}
         ]
       },
+      // 选择器
       selection: null,
-      delBtnStatus: true
+      // 批量删除按钮
+      delBtnStatus: true,
+      permDialogVisible: false,
+      permForm: {},
+      permTreeData: [],
+      defaultProps: {
+        children: 'children',
+        label: 'name'
+      },
     }
   },
   created() {
     this.getRoleList()
+    this.getMenuPer()
   },
   methods: {
     // 获取角色列表数据
@@ -250,6 +286,25 @@ export default {
     handleSizeChange(val) {
       this.queryForm.pageSize = val
       this.getRoleList()
+    },
+    //权限
+    async getMenuPer() {
+      const {data} = await menuList()
+      this.permTreeData = data
+    },
+    handlerShowPerm() {
+      roleInfo().then(data => {
+        this.$refs.permTree.setCheckedKeys(data.data.menuIds)
+        this.permForm = data.data
+      })
+      this.permDialogVisible = true
+    },
+    async handlerSubmitPerm() {
+      let menuIds = this.$refs.permTree.getCheckedKeys()
+      const {msg} = await handlerPerm(this.permForm.id, menuIds)
+      this.$message.success(msg)
+      this.$refs.permForm.resetFields()
+      this.permDialogVisible = false
     }
   }
 }

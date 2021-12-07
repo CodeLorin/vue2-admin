@@ -444,7 +444,7 @@ Mock.mock(RegExp('/sys/role/info/*'), 'get', () => {
         "name": "超级管理员",
         "code": "admin",
         "desc": "最高权限",
-        "menuIds": [3]
+        "menuIds": [1, 2, 3, 4, 5, 6]
     }
 
     return Result

@@ -38,3 +38,10 @@ export function deleteRole(ids) {
         ids
     })
 }
+
+export function handlerPerm(data) {
+    return request({
+        url: `/sys/role/perm/${data}`,
+        method: 'post',
+    })
+}
