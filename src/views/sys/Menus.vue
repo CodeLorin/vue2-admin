@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card>
+    <el-card shadow="hover">
       <el-button type="primary" icon="el-icon-plus" round size="small" @click="dialogVisible = true"
                  class="add-router-btn">
         添加菜单
