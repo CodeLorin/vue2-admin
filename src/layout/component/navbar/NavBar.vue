@@ -16,11 +16,10 @@
         </svg>
       </el-tooltip>
       <el-tooltip content="当前用户" placement="bottom" style="margin-right: 1rem">
-        <el-tag>登录用户:&nbsp;<span style="font-weight: bold">{{ username }}</span></el-tag>
+        <el-tag>登录用户:&nbsp;<span style="font-weight: bold">{{ userInfo.username }}</span></el-tag>
       </el-tooltip>
       <el-dropdown class="dropdown" @command="handleCommand" trigger="click">
-        <!--        <img class="avatar" :src="userInfo.avatar">-->
-        <img src="https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif" class="avatar">
+        <img class="avatar" :src="userInfo.avatar">
         <i class="el-icon-arrow-down el-icon--right"></i>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item icon="iconfont icon-gerenzhongxin" command="userCenter">个人中心</el-dropdown-item>
@@ -42,15 +41,13 @@ export default {
     Bread
   },
   data() {
-    return {
-      username: 'lorin'
-    }
+    return {}
   },
   computed: {
     ...mapState(['isCollapse', 'userInfo']),
   },
   created() {
-
+    this.$store.dispatch('setUserInfo')
   },
   methods: {
     ...mapMutations(['setCollapse', 'logout']),

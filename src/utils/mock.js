@@ -22,7 +22,7 @@ Mock.mock('/sys/userinfo', 'get', () => {
     let Result = getBaseResult()
     Result.data = {
         id: 1,
-        username: 'lorin',
+        username: 'bylorin',
         avatar: 'https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif'
     }
     return Result
@@ -357,4 +357,111 @@ Mock.mock('/sys/menu/list', 'get', () => {
             }]
         }]
     }
+})
+Mock.mock(RegExp('/sys/menu/info/*'), 'get', () => {
+    let Result = getBaseResult()
+    Result.msg = '获取成功'
+    Result.data = {
+        "id": 3,
+        "status": 1,
+        "parentId": 1,
+        "name": "角色管理",
+        "path": "/sys/roles",
+        "perms": "sys:role:list",
+        "component": "sys/Role",
+        "type": 1,
+        "icon": "el-icon-rank",
+        "orderNum": 2,
+        "children": []
+    }
+
+    return Result
+})
+Mock.mock(RegExp('/sys/menu/*'), 'post', () => {
+    let Result = getBaseResult()
+    Result.msg = "添加成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/menu/*'), 'put', () => {
+    let Result = getBaseResult()
+    Result.msg = "修改成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/menu/*'), 'delete', () => {
+    let Result = getBaseResult()
+    Result.msg = "删除成功"
+    return Result
+})
+// 获取角色
+Mock.mock(RegExp('/sys/role/list*'), 'get', () => {
+    let Result = getBaseResult()
+    Result.data = {
+        "records": [
+            {
+                "id": 3,
+                "created": "2021-01-04T10:09:14",
+                "updated": "2021-01-30T08:19:52",
+                "status": 1,
+                "name": "普通用户",
+                "code": "base",
+                "desc": "基础功能",
+                "menuIds": []
+            },
+            {
+                "id": 6,
+                "created": "2021-01-16T13:29:03",
+                "updated": "2021-01-17T15:50:45",
+                "status": 1,
+                "name": "超级管理员",
+                "code": "admin",
+                "desc": "最高权限",
+                "menuIds": []
+            }
+        ],
+        "total": 2,
+        "size": 10,
+        "current": 1,
+        "orders": [],
+        "optimizeCountSql": true,
+        "hitCount": false,
+        "countId": null,
+        "maxLimit": null,
+        "searchCount": true,
+        "pages": 1
+    }
+
+    return Result
+
+})
+
+Mock.mock(RegExp('/sys/role/info/*'), 'get', () => {
+    let Result = getBaseResult()
+    Result.data = {
+        "id": 6,
+        "created": "2021-01-16T13:29:03",
+        "updated": "2021-01-17T15:50:45",
+        "status": 1,
+        "name": "超级管理员",
+        "code": "admin",
+        "desc": "最高权限",
+        "menuIds": [3]
+    }
+
+    return Result
+})
+
+Mock.mock(RegExp('/sys/role/*'), 'post', () => {
+    let Result = getBaseResult()
+    Result.msg = "添加成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/role/*'), 'put', () => {
+    let Result = getBaseResult()
+    Result.msg = "修改成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/role/*'), 'delete', () => {
+    let Result = getBaseResult()
+    Result.msg = "删除成功"
+    return Result
 })
