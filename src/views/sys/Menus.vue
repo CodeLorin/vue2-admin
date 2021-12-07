@@ -86,7 +86,7 @@
               v-model="menuData.parentId"
               :options="options"
               :props="{ checkStrictly: true }"
-              clearable>
+              clearable filterable>
           </el-cascader>
         </el-form-item>
         <el-form-item label="菜单名称" prop="name" label-width="100px">
