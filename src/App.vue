@@ -25,4 +25,7 @@ body,
   fill: currentColor;
   overflow: hidden;
 }
+.btn-margin{
+  margin-right: 0.5rem;
+}
 </style>

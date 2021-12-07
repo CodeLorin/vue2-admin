@@ -66,7 +66,7 @@
         </el-table-column>
         <el-table-column label="操作" width="120">
           <template v-slot="scope">
-            <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false">
+            <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false" class="btn-margin">
               <el-button type="primary" size="mini" round icon="el-icon-edit" @click="showDialog(scope.row)">
               </el-button>
             </el-tooltip>
