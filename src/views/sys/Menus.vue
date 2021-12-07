@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card shadow="hover">
-      <el-button type="primary" icon="el-icon-plus" round @click="dialogVisible = true"
+      <el-button type="primary" icon="el-icon-plus" round size="small" @click="dialogVisible = true"
                  class="add-router-btn">
         添加菜单
       </el-button>
@@ -75,7 +75,7 @@
               <el-popconfirm
                   title="确定要删除菜单吗?"
                   @cancel="$message.info('已取消删除')"
-                  @confirm="deleteMenu(scope.row.name)"
+                  @confirm="deleteMenu(scope.row.id)"
               >
                 <el-button slot="reference" type="danger" size="mini" round icon="el-icon-delete">
                 </el-button>
@@ -145,7 +145,7 @@ import {menuList} from "@/api/sys/menu/index"
 import {addMenu} from "@/api/sys/menu"
 import {updateMenu} from "@/api/sys/menu"
 import {delMenu} from "@/api/sys/menu/index"
-import {getInfo} from "@/api/sys/menu/index"
+import {menuInfo} from "@/api/sys/menu/index"
 
 export default {
   name: "Menus",
@@ -205,11 +205,10 @@ export default {
         }
         this.options.push(temp)
         temp = {}
-
       })
     },
     async showDialog(row) {
-      const {data} = await getInfo(row.id)
+      const {data} = await menuInfo(row.id)
       this.menuForm = data
       this.dialogVisible = true
     },
@@ -239,11 +238,13 @@ export default {
       this.getMenuData()
     },
     async handlerStatusChange(row) {
-      const {data} = await getInfo(row.id)
+      //TODO fix this problem
+      const {data} = await menuInfo(row.id)
       this.menuForm = data
+      this.menuForm.status === 1 ? this.menuForm.status = 0 : this.menuForm.status = 1
       const {msg} = await updateMenu(this.menuForm)
       this.$message.success(msg)
-      this.resetForm()
+      this.getMenuData()
     }
   }
 }
@@ -253,6 +254,7 @@ export default {
 .add-router-btn {
   margin-bottom: 1rem;
 }
+
 .btn-margin {
   margin-right: 5px;
 }
