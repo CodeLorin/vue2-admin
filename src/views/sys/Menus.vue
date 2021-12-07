@@ -82,17 +82,12 @@
     <el-dialog title="菜单信息" :visible.sync="dialogVisible" width="600px" @closed="resetForm()">
       <el-form :model="menuForm" :rules="menuFormRules" ref="menuForm">
         <el-form-item label="上级菜单" prop="parentId" label-width="100px">
-          <!--模拟树形下拉框-->
-          <el-select v-model="menuForm.parentId" placeholder="请选择上级菜单">
-            <template v-for="item in menuData">
-              <el-option :label="item.name" :value="item.id"></el-option>
-              <template v-for="child in item.children">
-                <el-option :label="child.name" :value="child.id">
-                  <span>{{ '- ' + child.name }}</span>
-                </el-option>
-              </template>
-            </template>
-          </el-select>
+          <el-cascader
+              v-model="menuData.parentId"
+              :options="options"
+              :props="{ checkStrictly: true }"
+              clearable>
+          </el-cascader>
         </el-form-item>
         <el-form-item label="菜单名称" prop="name" label-width="100px">
           <el-input v-model="menuForm.name" autocomplete="off"></el-input>
@@ -104,7 +99,7 @@
           <el-input v-model="menuForm.icon" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="菜单URL" prop="path" label-width="100px">
-          <el-input v-model="menuForm.path" autocomplete="off"></el-input>
+          <el-input v-model="menuForm.path" autocomplete="off" clearable></el-input>
         </el-form-item>
         <el-form-item label="菜单组件" prop="component" label-width="100px">
           <el-input v-model="menuForm.component" autocomplete="off"></el-input>
@@ -153,6 +148,7 @@ export default {
       menuData: [],
       dialogVisible: false,
       menuForm: {},
+      options: [],
       menuFormRules: {
         parentId: [
           {required: true, message: '请选择上级菜单', trigger: 'blur'}
@@ -184,6 +180,27 @@ export default {
     async getMenuData() {
       const {data} = await menuList()
       this.menuData = data
+      this.handleOption()
+    },
+    handleOption() {
+      this.menuData.forEach(item => {
+        let temp = {
+          value: item.id,
+          label: item.name,
+        }
+        if (item.children) {
+          temp.children = []
+          item.children.forEach(e => {
+            temp.children.push({
+              value: e.id,
+              label: e.name,
+            })
+          })
+        }
+        this.options.push(temp)
+        temp = {}
+
+      })
     },
     async showDialog(row) {
       const {data} = await getInfo(row.id)
