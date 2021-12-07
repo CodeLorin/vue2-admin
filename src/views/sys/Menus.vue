@@ -60,7 +60,7 @@
                 active-color="#13ce66"
                 inactive-color="#dcdfe6"
                 :active-value="1"
-                :inactive-value="0">
+                :inactive-value="0" @change="handlerStatusChange(scope.row)">
             </el-switch>
           </template>
         </el-table-column>
@@ -210,8 +210,7 @@ export default {
     async showDialog(row) {
       const {data} = await getInfo(row.id)
       this.menuForm = data
-      // this.menuForm = row
-      // this.dialogVisible = true
+      this.dialogVisible = true
     },
     resetForm() {
       this.$refs.menuForm.resetFields()
@@ -237,6 +236,13 @@ export default {
       const {msg} = await delMenu(id)
       this.$message.success(msg)
       this.getMenuData()
+    },
+    async handlerStatusChange(row) {
+      const {data} = await getInfo(row.id)
+      this.menuForm = data
+      const {msg} = await updateMenu(this.menuForm)
+      this.$message.success(msg)
+      this.resetForm()
     }
   }
 }
