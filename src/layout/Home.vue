@@ -33,7 +33,9 @@ export default {
   },
   created() {
     this.$notify.success({
-      message: "登录成功，欢迎来到lorin管理系统",
+      type: "success",
+      title: '登录成功',
+      message: "欢迎来到lorin管理系统",
       duration: 3000,
       offset: 30,
       dangerouslyUseHTMLString: true,
