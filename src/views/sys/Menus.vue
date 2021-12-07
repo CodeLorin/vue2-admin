@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card shadow="hover">
-      <el-button type="primary" icon="el-icon-plus" round size="small" @click="dialogVisible = true"
+      <el-button type="primary" icon="el-icon-plus" round @click="dialogVisible = true"
                  class="add-router-btn">
         添加菜单
       </el-button>
@@ -66,8 +66,9 @@
         </el-table-column>
         <el-table-column label="操作" width="120">
           <template v-slot="scope">
-            <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false" class="btn-margin">
-              <el-button type="primary" size="mini" round icon="el-icon-edit" @click="showDialog(scope.row)">
+            <el-tooltip effect="dark" content="编辑" placement="top" :enterable="false">
+              <el-button type="primary" size="mini" round icon="el-icon-edit" @click="showDialog(scope.row)"
+                         class="btn-margin">
               </el-button>
             </el-tooltip>
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
