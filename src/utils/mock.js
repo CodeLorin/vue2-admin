@@ -22,7 +22,7 @@ Mock.mock('/sys/userinfo', 'get', () => {
     let Result = getBaseResult()
     Result.data = {
         id: 1,
-        username: 'lorin',
+        username: 'bylorin',
         avatar: 'https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif'
     }
     return Result

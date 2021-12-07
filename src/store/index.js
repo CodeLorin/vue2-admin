@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import persistedState from 'vuex-persistedstate'
 import {getRouter} from "@/api/router/getRouter";
+import {userInfo} from "@/api/user/userInfo";
 
 Vue.use(Vuex)
 
@@ -74,7 +75,8 @@ export default new Vuex.Store({
             context.commit('setMenuList', data.menu);
             context.commit('setPermList', data.authorization)
         },
-        setUserInfo(context, data) {
+        async setUserInfo(context) {
+            const {data} = await userInfo()
             context.commit('setUserInfo', data);
         },
         saveTab(context, data) {
