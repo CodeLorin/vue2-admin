@@ -53,10 +53,15 @@
         <el-table-column
             prop="status"
             label="状态"
-            width="60">
+            width="65">
           <template v-slot="scope">
-            <el-tag v-if="!scope.row.status" size="mini" type="danger">禁用</el-tag>
-            <el-tag v-else-if="scope.row.status" size="mini" type="success">正常</el-tag>
+            <el-switch
+                v-model="scope.row.status"
+                active-color="#13ce66"
+                inactive-color="#dcdfe6"
+                :active-value="1"
+                :inactive-value="0">
+            </el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="120">
