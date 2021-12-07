@@ -253,4 +253,7 @@ export default {
 .add-router-btn {
   margin-bottom: 1rem;
 }
+.btn-margin {
+  margin-right: 5px;
+}
 </style>
