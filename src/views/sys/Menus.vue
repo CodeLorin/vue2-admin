@@ -223,7 +223,6 @@ export default {
       this.dialogVisible = false
     },
     submitForm() {
-      console.log(this.menuForm)
       this.$refs.menuForm.validate(async valid => {
         if (!valid) return
         if (this.menuForm.id) {

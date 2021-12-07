@@ -31,7 +31,7 @@ export function delMenu(data) {
     })
 }
 
-export function getInfo(data) {
+export function menuInfo(data) {
     return request({
         url: `/sys/menu/info/${data}`,
         method: 'get',
