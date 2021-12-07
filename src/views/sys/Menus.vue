@@ -85,13 +85,14 @@
         </el-table-column>
       </el-table>
     </el-card>
-    <el-dialog title="菜单信息" :visible.sync="dialogVisible" width="600px" @closed="resetForm()">
+    <el-dialog title="菜单信息" :visible.sync="dialogVisible" width="600px" @closed="resetForm"
+               :before-close="resetForm">
       <el-form :model="menuForm" :rules="menuFormRules" ref="menuForm">
         <el-form-item label="上级菜单" prop="parentId" label-width="100px">
           <el-cascader
-              v-model="menuData.parentId"
+              v-model="menuForm.parentId"
               :options="options"
-              :props="{ checkStrictly: true }"
+              :props="menuProps"
               clearable filterable>
           </el-cascader>
         </el-form-item>
@@ -155,6 +156,9 @@ export default {
       dialogVisible: false,
       menuForm: {},
       options: [],
+      menuProps: {
+        checkStrictly: true, expandTrigger: 'hover', emitPath: false
+      },
       menuFormRules: {
         parentId: [
           {required: true, message: '请选择上级菜单', trigger: 'blur'}
@@ -179,6 +183,7 @@ export default {
   },
   created() {
     this.getMenuData()
+
   }
   ,
   methods: {
@@ -218,6 +223,7 @@ export default {
       this.dialogVisible = false
     },
     submitForm() {
+      console.log(this.menuForm)
       this.$refs.menuForm.validate(async valid => {
         if (!valid) return
         if (this.menuForm.id) {
@@ -230,7 +236,7 @@ export default {
         this.getMenuData()
         this.dialogVisible = false
       })
-
+      console.log(this.menuForm)
     },
     async deleteMenu(id) {
       const {msg} = await delMenu(id)
