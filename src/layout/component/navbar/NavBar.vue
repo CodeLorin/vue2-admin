@@ -76,9 +76,6 @@ export default {
       }
       this.fullscreen = !this.fullscreen;
     },
-    toGithub() {
-      window.open("https://gitee.com/duan_nan/nanjustar-template");
-    },
     handleCommand(command) {
       if (command === 'userCenter') {
         this.$router.push('/usercenter')

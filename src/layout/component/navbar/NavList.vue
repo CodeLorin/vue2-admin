@@ -60,7 +60,7 @@ export default {
     removeTab(tab) { //删除标签
       this.$store.commit("removeTab", tab);
       //如果删除的是当前页则返回上一标签页
-      if (tab.path === this.$route.path) {
+      if (tab.path !== '/home' && tab.path === this.$route.path) {
         var tabList = this.$store.state.tabList;
         this.$router.push({path: tabList[tabList.length - 1].path});
       }
