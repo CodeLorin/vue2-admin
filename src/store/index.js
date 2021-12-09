@@ -25,7 +25,7 @@ export default new Vuex.Store({
         },
         // 移除标签
         removeTab(state, tab) {
-            if (tab.name !== "首页") {
+            if (tab.path !== '/home') {
                 let index = state.tabList.findIndex(item => item.path === tab.path);
                 state.tabList.splice(index, 1);
             }
