@@ -292,7 +292,7 @@ export default {
       const {data} = await menuList()
       this.permTreeData = data
     },
-    handlerShowPerm() {
+    handlerShowRole() {
       roleInfo().then(data => {
         this.$refs.permTree.setCheckedKeys(data.data.menuIds)
         this.permForm = data.data

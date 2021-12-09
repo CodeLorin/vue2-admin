@@ -105,8 +105,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
     return {
         "code": 200, "msg": "操作成功", "data": [{
             "id": 1,
-            "created": "2021-01-15T18:58:18",
-            "updated": "2021-01-15T18:58:20",
+            "created": "2021-01-12 18:58:18",
+            "updated": "2021-01-12 18:58:20",
             "status": 1,
             "parentId": 0,
             "name": "系统管理",
@@ -118,8 +118,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
             "ordernum": 1,
             "children": [{
                 "id": 2,
-                "created": "2021-01-15T19:03:45",
-                "updated": "2021-01-15T19:03:48",
+                "created": "2021-01-12 19:03:45",
+                "updated": "2021-01-12 19:03:48",
                 "status": 1,
                 "parentId": 1,
                 "name": "用户管理",
@@ -131,7 +131,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                 "ordernum": 1,
                 "children": [{
                     "id": 9,
-                    "created": "2021-01-17T21:48:32",
+                    "created": "2021-01-12 21:48:32",
                     "updated": null,
                     "status": 1,
                     "parentId": 2,
@@ -145,8 +145,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 10,
-                    "created": "2021-01-17T21:49:03",
-                    "updated": "2021-01-17T21:53:04",
+                    "created": "2021-01-12 21:49:03",
+                    "updated": "2021-01-12 21:53:04",
                     "status": 1,
                     "parentId": 2,
                     "name": "修改用户",
@@ -159,7 +159,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 11,
-                    "created": "2021-01-17T21:49:21",
+                    "created": "2021-01-12 21:49:21",
                     "updated": null,
                     "status": 1,
                     "parentId": 2,
@@ -173,7 +173,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 12,
-                    "created": "2021-01-17T21:49:58",
+                    "created": "2021-01-12 21:49:58",
                     "updated": null,
                     "status": 1,
                     "parentId": 2,
@@ -187,7 +187,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 13,
-                    "created": "2021-01-17T21:50:36",
+                    "created": "2021-01-12 21:50:36",
                     "updated": null,
                     "status": 1,
                     "parentId": 2,
@@ -202,8 +202,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
                 }]
             }, {
                 "id": 3,
-                "created": "2021-01-15T19:03:45",
-                "updated": "2021-01-15T19:03:48",
+                "created": "2021-01-12 19:03:45",
+                "updated": "2021-01-12 19:03:48",
                 "status": 1,
                 "parentId": 1,
                 "name": "角色管理",
@@ -215,8 +215,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
                 "ordernum": 2,
                 "children": [{
                     "id": 7,
-                    "created": "2021-01-15T23:02:25",
-                    "updated": "2021-01-17T21:53:14",
+                    "created": "2021-01-12 23:02:25",
+                    "updated": "2021-01-12 21:53:14",
                     "status": 0,
                     "parentId": 3,
                     "name": "添加角色",
@@ -229,7 +229,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 14,
-                    "created": "2021-01-17T21:51:14",
+                    "created": "2021-01-12 21:51:14",
                     "updated": null,
                     "status": 1,
                     "parentId": 3,
@@ -243,7 +243,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 15,
-                    "created": "2021-01-17T21:51:39",
+                    "created": "2021-01-12 21:51:39",
                     "updated": null,
                     "status": 1,
                     "parentId": 3,
@@ -257,7 +257,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 16,
-                    "created": "2021-01-17T21:52:02",
+                    "created": "2021-01-12 21:52:02",
                     "updated": null,
                     "status": 1,
                     "parentId": 3,
@@ -272,8 +272,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
                 }]
             }, {
                 "id": 4,
-                "created": "2021-01-15T19:03:45",
-                "updated": "2021-01-15T19:03:48",
+                "created": "2021-01-12 19:03:45",
+                "updated": "2021-01-12 19:03:48",
                 "status": 1,
                 "parentId": 1,
                 "name": "菜单管理",
@@ -285,8 +285,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
                 "ordernum": 3,
                 "children": [{
                     "id": 17,
-                    "created": "2021-01-17T21:53:53",
-                    "updated": "2021-01-17T21:55:28",
+                    "created": "2021-01-12 21:53:53",
+                    "updated": "2021-01-12 21:55:28",
                     "status": 1,
                     "parentId": 4,
                     "name": "添加菜单",
@@ -299,7 +299,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 18,
-                    "created": "2021-01-17T21:56:12",
+                    "created": "2021-01-12 21:56:12",
                     "updated": null,
                     "status": 1,
                     "parentId": 4,
@@ -313,7 +313,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
                     "children": []
                 }, {
                     "id": 19,
-                    "created": "2021-01-17T21:56:36",
+                    "created": "2021-01-12 21:56:36",
                     "updated": null,
                     "status": 1,
                     "parentId": 4,
@@ -329,7 +329,7 @@ Mock.mock('/sys/menu/list', 'get', () => {
             }]
         }, {
             "id": 5,
-            "created": "2021-01-15T19:06:11",
+            "created": "2021-01-12 19:06:11",
             "updated": null,
             "status": 1,
             "parentId": 0,
@@ -342,8 +342,8 @@ Mock.mock('/sys/menu/list', 'get', () => {
             "ordernum": 2,
             "children": [{
                 "id": 6,
-                "created": "2021-01-15T19:07:18",
-                "updated": "2021-01-18T16:32:13",
+                "created": "2021-01-12 19:07:18",
+                "updated": "2021-01-12 16:32:13",
                 "status": 1,
                 "parentId": 5,
                 "name": "系统日志",
@@ -399,8 +399,8 @@ Mock.mock(RegExp('/sys/role/list*'), 'get', () => {
         "records": [
             {
                 "id": 3,
-                "created": "2021-01-04T10:09:14",
-                "updated": "2021-01-30T08:19:52",
+                "created": "2021-01-02 10:09:14",
+                "updated": "2021-01-32 08:19:52",
                 "status": 1,
                 "name": "普通用户",
                 "code": "base",
@@ -409,8 +409,8 @@ Mock.mock(RegExp('/sys/role/list*'), 'get', () => {
             },
             {
                 "id": 6,
-                "created": "2021-01-16T13:29:03",
-                "updated": "2021-01-17T15:50:45",
+                "created": "2021-01-12 13:29:03",
+                "updated": "2021-01-12 15:50:45",
                 "status": 1,
                 "name": "超级管理员",
                 "code": "admin",
@@ -438,8 +438,8 @@ Mock.mock(RegExp('/sys/role/info/*'), 'get', () => {
     let Result = getBaseResult()
     Result.data = {
         "id": 6,
-        "created": "2021-01-16T13:29:03",
-        "updated": "2021-01-17T15:50:45",
+        "created": "2021-01-12 13:29:03",
+        "updated": "2021-01-12 15:50:45",
         "status": 1,
         "name": "超级管理员",
         "code": "admin",
@@ -463,5 +463,119 @@ Mock.mock(RegExp('/sys/role/*'), 'put', () => {
 Mock.mock(RegExp('/sys/role/*'), 'delete', () => {
     let Result = getBaseResult()
     Result.msg = "删除成功"
+    return Result
+})
+
+// 用户管理
+
+Mock.mock(RegExp('/sys/user/list*'), 'get', () => {
+    let Result = getBaseResult()
+    Result.data = {
+        "records": [
+            {
+                "id": 1,
+                "created": "2021-01-12 22:13:53",
+                "updated": "2021-01-12 16:57:32",
+                "status": 1,
+                "username": "admin",
+                "password": "$2a$10$R7zegeWzOXPw871CmNuJ6upC0v8D373GuLuTw8jn6NET4BkPRZfgK",
+                "avatar": "https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif",
+                "email": "admin@qq.com",
+                "city": "广州",
+                "lastLogin": "2020-12-32 08:38:37",
+                "roles": [
+                    {
+                        "id": 6,
+                        "created": "2021-01-12 13:29:03",
+                        "updated": "2021-01-12 15:50:45",
+                        "status": 1,
+                        "name": "超级管理员",
+                        "code": "admin",
+                        "remark": "系统默认最高权限，不可以编辑和任意修改",
+                        "menuIds": []
+                    },
+                    {
+                        "id": 3,
+                        "created": "2021-01-02 10:09:14",
+                        "updated": "2021-01-32 08:19:52",
+                        "status": 1,
+                        "name": "普通用户",
+                        "code": "normal",
+                        "remark": "只有基本查看功能",
+                        "menuIds": []
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "created": "2021-01-32 08:20:22",
+                "updated": "2021-01-32 08:55:57",
+                "status": 1,
+                "username": "lorin",
+                "password": "$2a$10$0ilP4ZD1kLugYwLCs4pmb.ZT9cFqzOZTNaMiHxrBnVIQUGUwEvBIO",
+                "avatar": "https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif",
+                "email": "lorin@qq.com",
+                "city": null,
+                "lastLogin": null,
+                "roles": [
+                    {
+                        "id": 3,
+                        "created": "2021-01-02 10:09:14",
+                        "updated": "2021-01-32 08:19:52",
+                        "status": 1,
+                        "name": "普通用户",
+                        "code": "normal",
+                        "remark": "只有基本查看功能",
+                        "menuIds": []
+                    }
+                ]
+            }
+        ],
+        "total": 2,
+        "size": 10,
+        "current": 1,
+        "orders": [],
+        "optimizeCountSql": true,
+        "hitCount": false,
+        "countId": null,
+        "maxLimit": null,
+        "searchCount": true,
+        "pages": 1
+    }
+
+    return Result
+})
+
+
+Mock.mock(RegExp('/sys/user/*'), 'post', () => {
+    let Result = getBaseResult()
+    Result.msg = "添加成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/user/*'), 'put', () => {
+    let Result = getBaseResult()
+    Result.msg = "修改成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/user/*'), 'delete', () => {
+    let Result = getBaseResult()
+    Result.msg = "删除成功"
+    return Result
+})
+Mock.mock(RegExp('/sys/user/info/*'), 'get', () => {
+    let Result = getBaseResult()
+    Result.data = {
+        "id": 2,
+        "created": "2021-01-32 08:20:22",
+        "updated": "2021-01-32 08:55:57",
+        "status": 1,
+        "username": "lorin",
+        "password": "$2a$1asgasd",
+        "avatar": "https://cdn.jsdelivr.net/gh/CodeLorin/img@master/20210425/xxx.6b4667utjuc0.jfif",
+        "email": "lorin@qq.com",
+        "city": null,
+        "lastLogin": null,
+        "roles": []
+    }
     return Result
 })
