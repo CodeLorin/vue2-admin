@@ -12,7 +12,7 @@
           {{ item.name }}
           <i
               class="el-icon-close"
-              v-if="item.path !== '/'"
+              v-if="item.name!=='系统首页'"
               @click.stop="removeTab(item)"/>
         </span>
       </div>
