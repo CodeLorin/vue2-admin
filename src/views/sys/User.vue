@@ -81,12 +81,12 @@
         <el-table-column
             prop="createTime"
             label="创建时间"
-            width="200">
+            width="180">
         </el-table-column>
         <el-table-column
             prop="lastLogin"
             label="最后登录时间"
-            width="200">
+            width="180">
         </el-table-column>
         <el-table-column label="操作" width="280">
           <template v-slot="scope">
@@ -194,7 +194,7 @@
         <el-form-item label="新密码" prop="password" label-width="100px">
           <el-input v-model="passwordForm.password" type="password" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="再次输入" prop="password" label-width="100px">
+        <el-form-item label="再次输入新密码" prop="password" label-width="100px">
           <el-input v-model="passwordForm.rePassword" type="password" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>

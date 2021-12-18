@@ -75,10 +75,14 @@ service.interceptors.response.use(
                 duration: 3 * 1000
             })
         }
-        if (error.response.status === 401 || error.response.status === 403) {
+        if (error.response.status === 401) {
             store.dispatch("logout")
             router.push('/login')
         }
+        // if (error.response.status === 401 || error.response.status === 403) {
+        //     store.dispatch("logout")
+        //     router.push('/login')
+        // }
         return Promise.reject(error)
     }
 )

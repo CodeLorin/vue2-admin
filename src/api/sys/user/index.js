@@ -49,7 +49,7 @@ export function handlerRole(id, data) {
 export function rePassword(data) {
     return request({
         url: `/sys/user/repass`,
-        method: 'post',
+        method: 'put',
         data
     })
 }
