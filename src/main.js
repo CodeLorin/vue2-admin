@@ -17,9 +17,9 @@ Vue.prototype.$axios = request
 // 滚动条
 import 'nprogress/nprogress.css'
 // mock.js
-if (process.env.NODE_ENV === 'development') {
-    require('./utils/mock')
-}
+// if (process.env.NODE_ENV === 'development') {
+//     require('./utils/mock')
+// }
 // 动画
 import 'animate.css'
 // 图标

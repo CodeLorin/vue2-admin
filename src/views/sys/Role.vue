@@ -44,7 +44,7 @@
         <el-table-column prop="code" label="唯一标识">
 
         </el-table-column>
-        <el-table-column prop="desc" label="角色描述">
+        <el-table-column prop="description" label="角色描述">
 
         </el-table-column>
         <el-table-column
@@ -79,7 +79,7 @@
               </el-popconfirm>
             </el-tooltip>
             <el-tooltip effect="dark" content="分配权限" placement="top" :enterable="false">
-              <el-button type="warning" size="mini" round icon="el-icon-setting" @click="handlerShowPerm(scope.row.id)"
+              <el-button type="warning" size="mini" round icon="el-icon-setting" @click="handlerShowRole(scope.row.id)"
               >
               </el-button>
             </el-tooltip>
@@ -107,8 +107,8 @@
         <el-form-item label="唯一标识" prop="code" label-width="100px">
           <el-input v-model="roleForm.code" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="角色描述" prop="desc" label-width="100px">
-          <el-input v-model="roleForm.desc" autocomplete="off"></el-input>
+        <el-form-item label="角色描述" prop="description" label-width="100px">
+          <el-input v-model="roleForm.description" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="角色状态" prop="status" label-width="100px">
           <el-switch
@@ -169,8 +169,8 @@ export default {
     return {
       queryForm: {
         query: '',
-        pageNum: 0,
-        pageSize: 0
+        pageNum: 1,
+        pageSize: 10
       },
       total: 1,
       tableData: null,
@@ -184,11 +184,8 @@ export default {
         code: [
           {required: true, message: '请输入唯一编码', trigger: 'blur'}
         ],
-        desc: [
+        description: [
           {required: true, message: '请输入角色描述', trigger: 'blur'}
-        ],
-        status: [
-          {required: true, message: '请选择角色状态', trigger: 'blur'}
         ]
       },
       // 选择器
@@ -229,6 +226,7 @@ export default {
       this.$refs.roleForm.validate(async valid => {
         if (!valid) return
         if (this.roleForm.id) {
+          console.log(this.roleForm)
           const {msg} = await updateRole(this.roleForm)
           this.$message.success(msg)
         } else {
@@ -236,6 +234,7 @@ export default {
           this.$message.success(msg)
         }
         this.getRoleList()
+        this.resetForm()
         this.dialogVisible = false
       })
 
@@ -276,6 +275,7 @@ export default {
       this.roleForm.status === 1 ? this.roleForm.status = 0 : this.roleForm.status = 1
       const {msg} = await updateRole(this.roleForm)
       this.$message.success(msg)
+      this.resetForm()
       this.getRoleList()
     },
     // 分页回调
@@ -292,8 +292,8 @@ export default {
       const {data} = await menuList()
       this.permTreeData = data
     },
-    handlerShowRole() {
-      roleInfo().then(data => {
+    handlerShowRole(id) {
+      roleInfo(id).then(data => {
         this.$refs.permTree.setCheckedKeys(data.data.menuIds)
         this.permForm = data.data
       })

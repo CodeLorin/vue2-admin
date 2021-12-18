@@ -4,9 +4,8 @@ import store from '../store'
 
 export const initMenu = () => {
     getRouter().then(res => {
-
         if (res.data) {
-            res.data.menu.forEach(menu => {
+            res.data.nav.forEach(menu => {
                 if (menu.children) {
                     menu.children.forEach(e => {
                         // 转成路由
@@ -19,7 +18,6 @@ export const initMenu = () => {
                 } else {
                     router.addRoute('lorin', menuToRoute(menu))
                 }
-
             })
         }
         store.dispatch('setRouterList', res.data)

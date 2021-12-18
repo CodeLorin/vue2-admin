@@ -51,7 +51,7 @@ Mock.mock('/sys/getrouter', 'get', () => {
                         name: 'SysRole',
                         title: '角色管理',
                         icon: 'icon-jiaoseguanli',
-                        path: '/sys/role',
+                        path: '/sys/roles',
                         component: 'sys/Role',
                         children: []
                     },

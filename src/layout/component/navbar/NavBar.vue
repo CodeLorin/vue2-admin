@@ -50,7 +50,7 @@ export default {
     this.$store.dispatch('setUserInfo')
   },
   methods: {
-    ...mapMutations(['setCollapse', 'logout']),
+    ...mapMutations(['setCollapse']),
     fullPage() {
       let element = document.documentElement;
       if (this.fullscreen) {
@@ -85,7 +85,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.logout();
+          this.$store.dispatch('logout');
           this.$router.replace("/login");
           this.$message.success("退出系统成功")
         })

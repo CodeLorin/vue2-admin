@@ -15,33 +15,40 @@ export function userInfo(id) {
     })
 }
 
-export function addUser(user) {
+export function addUser(data) {
     return request({
-        url: '/sys/user/save',
+        url: '/sys/user/add',
         method: 'post',
-        user
+        data
     })
 }
 
-export function updateUser(user) {
+export function updateUser(data) {
     return request({
         url: '/sys/user/update',
         method: 'put',
-        user
+        data
     })
 }
 
-export function deleteUser(ids) {
+export function deleteUser(data) {
     return request({
         url: '/sys/user/delete',
         method: 'delete',
-        ids
+        data
     })
 }
 
 export function handlerRole(id, data) {
     return request({
         url: `/sys/user/role/${id}`,
+        method: 'post',
+        data
+    })
+}
+export function rePassword(data) {
+    return request({
+        url: `/sys/user/repass`,
         method: 'post',
         data
     })

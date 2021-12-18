@@ -249,6 +249,7 @@ export default {
       this.menuForm.status === 1 ? this.menuForm.status = 0 : this.menuForm.status = 1
       const {msg} = await updateMenu(this.menuForm)
       this.$message.success(msg)
+      this.resetForm()
       this.getMenuData()
     }
   }

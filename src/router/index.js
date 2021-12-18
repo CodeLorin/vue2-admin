@@ -42,6 +42,11 @@ const routes = [
         },
         component: () => import('../views/Login')
     },
+    {
+        path: "/test",
+        name: "Test",
+        component: () => import("../views/Test")
+    }
 
 ]
 
@@ -65,7 +70,7 @@ router.beforeEach((to, from, next) => {
         next('/login')
         Message.warning("请先登录！！")
         NProgress.done()
-    } else if (!store.state.isGetRouter || router.getRoutes().length <= 4) {
+    } else if (!store.state.isGetRouter || router.getRoutes().length <= 5) {
         initMenu()
     }
     next()

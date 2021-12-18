@@ -222,7 +222,7 @@
                  class="password-icon"/>
             </el-form-item>
             <el-form-item class="tool">
-              <el-checkbox v-model="loginForm.rememberMe" name="remember-me">记住密码
+              <el-checkbox v-model="rememberMe" name="remember-me">记住密码
               </el-checkbox>
               <i class="el-icon-warning-outline forget" @click="showForgetPasswordDialog"><span>忘记密码</span></i>
             </el-form-item>
@@ -241,20 +241,20 @@
 <script>
 import captcha_config from "../assets/config/captcha";
 import {login} from "../api/user/login";
-import {initMenu} from "../utils/addRouter";
-
+import qs from 'qs';
 
 export default {
   name: "Login",
   data() {
     return {
-      loginForm: {username: '', password: '', rememberMe: false},
+      loginForm: {username: '', password: ''},
+      rememberMe: false,
       loginRules: {
         username: [
           {required: true, message: '请输入账号', trigger: 'blur'}
         ],
         password: [{required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 5, max: 20, message: '密码长度在 6 到 20 个字符之间', trigger: 'blur'}]
+          {min: 5, max: 20, message: '密码长度在 5 到 20 个字符之间', trigger: 'blur'}]
       },
       loading: false,
       passwordType: 'password',
@@ -268,12 +268,11 @@ export default {
         if (!valid) return
         let captcha = new TencentCaptcha(captcha_config.CaptchaAppId, (res) => {
           if (res.ret === 0) {
-            login(this.loginForm).then(res => {
+            login(qs.stringify(this.loginForm)).then(res => {
               this.$store.commit('setToken', res.data)
-              // initMenu()
               this.$router.replace('/home')
             }).catch(error => {
-              this.$message.error(error)
+              console.log(error)
             })
           } else {
             this.$message.error("验证失败")

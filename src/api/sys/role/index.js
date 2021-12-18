@@ -15,27 +15,27 @@ export function roleInfo(id) {
     })
 }
 
-export function addRole(role) {
+export function addRole(data) {
     return request({
-        url: '/sys/role/save',
+        url: '/sys/role/add',
         method: 'post',
-        role
+        data
     })
 }
 
-export function updateRole(role) {
+export function updateRole(data) {
     return request({
         url: '/sys/role/update',
         method: 'put',
-        role
+        data
     })
 }
 
-export function deleteRole(ids) {
+export function deleteRole(data) {
     return request({
         url: '/sys/role/delete',
         method: 'delete',
-        ids
+        data
     })
 }
 

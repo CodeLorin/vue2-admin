@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getRouter() {
     return request({
-        url: '/sys/getrouter',
+        url: '/sys/menu/nav',
         method: 'get',
     })
 }

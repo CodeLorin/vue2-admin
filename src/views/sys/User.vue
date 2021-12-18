@@ -55,7 +55,9 @@
             label="角色名称"
             width="240">
           <template slot-scope="scope">
-            <el-tag style="margin-right: 5px;" size="small" v-for="item in scope.row.roles">{{ item.name }}</el-tag>
+            <el-tag style="margin-right: 5px;" size="small" v-for="(item,index) in scope.row.roles" :key="item.index">
+              {{ item.name }}
+            </el-tag>
           </template>
         </el-table-column>
         <el-table-column
@@ -77,8 +79,13 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="created"
+            prop="createTime"
             label="创建时间"
+            width="200">
+        </el-table-column>
+        <el-table-column
+            prop="lastLogin"
+            label="最后登录时间"
             width="200">
         </el-table-column>
         <el-table-column label="操作" width="280">
@@ -106,7 +113,7 @@
             </el-tooltip>
             <el-tooltip effect="dark" content="修改密码" placement="top" :enterable="false">
               <el-button type="info" style="margin-left: 0" size="mini" round icon="el-icon-lock"
-                         @click="passwordDialogVisible=true"
+                         @click="updatePassword(scope.row.id)"
               >
               </el-button>
             </el-tooltip>
@@ -127,6 +134,12 @@
     </el-card>
     <el-dialog title="用户信息" :visible.sync="dialogVisible" width="600px" @closed="resetForm"
                :before-close="resetForm">
+      <el-alert
+          title="默认密码为123456"
+          type="info"
+          style="margin-bottom: 1rem"
+      >
+      </el-alert>
       <el-form :model="userForm" :rules="userFormRules" ref="userForm">
         <el-form-item label="用户名" prop="username" label-width="100px">
           <el-input v-model="userForm.username" autocomplete="off"></el-input>
@@ -201,6 +214,7 @@ import {deleteUser} from "@/api/sys/user";
 import {userInfo} from "@/api/sys/user";
 import {roleList} from "@/api/sys/role";
 import {handlerRole} from "@/api/sys/user";
+import {rePassword} from "../../api/sys/user";
 
 export default {
   name: "User",
@@ -208,8 +222,8 @@ export default {
     return {
       queryForm: {
         query: '',
-        pageNum: 0,
-        pageSize: 0
+        pageNum: 1,
+        pageSize: 10
       },
       total: 1,
       tableData: null,
@@ -246,7 +260,7 @@ export default {
       passwordFormRules: {
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 6, message: '密码至少为6位', trigger: ['blur', 'change']}
+          {min: 5, message: '密码至少为5位', trigger: ['blur', 'change']}
         ]
       }
     }
@@ -282,6 +296,7 @@ export default {
           const {msg} = await addUser(this.userForm)
           this.$message.success(msg)
         }
+        this.resetForm()
         this.getUserList()
         this.dialogVisible = false
       })
@@ -290,17 +305,6 @@ export default {
       this.$refs.pwdForm.resetFields()
       this.passwordForm = {}
       this.passwordDialogVisible = false
-    },
-    submitPwdForm() {
-      this.$refs.pwdForm.validate(valid => {
-        if (!valid) return
-        else if (this.passwordForm.password !== this.passwordForm.rePassword) {
-          return this.$message.warning('两次输入的密码不一致')
-        }
-        //TODO 修改用户密码
-        this.passwordDialogVisible = false
-      })
-
     },
     // 查询回调函数
     queryUser() {
@@ -371,6 +375,25 @@ export default {
       this.$message.success(msg)
       this.$refs.roleForm.resetFields()
       this.roleDialogVisible = false
+      this.getUserList()
+    },
+    submitPwdForm() {
+      this.$refs.pwdForm.validate(async valid => {
+        if (!valid) return
+        else if (this.passwordForm.password !== this.passwordForm.rePassword) {
+          return this.$message.warning('两次输入的密码不一致')
+        }
+        const res = await rePassword(this.passwordForm)
+        this.$message.success(res.msg)
+
+        this.resetPwdForm()
+        this.passwordDialogVisible = false
+      })
+
+    },
+    async updatePassword(id) {
+      this.passwordDialogVisible = true
+      this.passwordForm.id = id;
     }
   }
 }

@@ -25,9 +25,8 @@ export function updateMenu(data) {
 
 export function delMenu(data) {
     return request({
-        url: '/sys/menu/del',
+        url: `/sys/menu/del/${data}`,
         method: 'delete',
-        data
     })
 }
 
