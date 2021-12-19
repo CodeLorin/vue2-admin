@@ -232,10 +232,11 @@ export default {
           const {msg} = await addMenu(this.menuForm)
           this.$message.success(msg)
         }
+        this.resetForm()
         this.getMenuData()
         this.dialogVisible = false
+        this.options = []
       })
-      console.log(this.menuForm)
     },
     async deleteMenu(id) {
       const {msg} = await delMenu(id)
@@ -243,7 +244,6 @@ export default {
       this.getMenuData()
     },
     async handlerStatusChange(row) {
-      //TODO fix this problem
       const {data} = await menuInfo(row.id)
       this.menuForm = data
       this.menuForm.status === 1 ? this.menuForm.status = 0 : this.menuForm.status = 1
