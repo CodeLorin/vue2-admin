@@ -36,14 +36,21 @@
         </el-table-column>
         <el-table-column type="expand">
           <template v-slot="props">
-            <el-form style="margin: 1rem">
-              <el-form-item label="返回值: ">
-                <span>{{ props.row.res }}</span>
-              </el-form-item>
-            </el-form>
+            <el-card shadow="hover" style="margin: 1rem">
+              <el-form style="margin: 1rem">
+                <el-form-item label="请求参数: " class="item">
+                  <el-icon class="el-icon-star-off" style="margin-right: 6px"></el-icon>
+                  <span>{{ props.row.params }}</span>
+                </el-form-item>
+                <el-form-item label="返回值: " class="item">
+                  <el-icon class="el-icon-cloudy" style="margin-right: 6px"></el-icon>
+                  <span>{{ props.row.res }}</span>
+                </el-form-item>
+              </el-form>
+            </el-card>
           </template>
         </el-table-column>
-        <el-table-column prop="id" label="ID" sortable>
+        <el-table-column prop="id" label="ID" sortable width="80">
 
         </el-table-column>
         <el-table-column prop="module" label="模块" sortable>
@@ -58,11 +65,17 @@
         </el-table-column>
         <el-table-column
             prop="username"
-            label="用户名" sortable>
+            label="用户名" sortable align="center">
         </el-table-column>
         <el-table-column
             prop="requestMethod"
-            label="请求方式" sortable>
+            label="请求方式" sortable align="center">
+          <template v-slot="scope">
+            <el-tag type="success" v-if="scope.row.requestMethod==='GET'">{{ scope.row.requestMethod }}</el-tag>
+            <el-tag type="warning" v-else-if="scope.row.requestMethod==='POST'">{{ scope.row.requestMethod }}</el-tag>
+            <el-tag type="info" v-else-if="scope.row.requestMethod==='PUT'">{{ scope.row.requestMethod }}</el-tag>
+            <el-tag type="danger" v-else-if="scope.row.requestMethod==='DELETE'">{{ scope.row.requestMethod }}</el-tag>
+          </template>
         </el-table-column>
         <el-table-column
             prop="ip"
@@ -73,12 +86,16 @@
             label="地址" sortable>
         </el-table-column>
         <el-table-column
-            prop="ua"
-            label="ua">
+            prop="browser"
+            label="浏览器">
+        </el-table-column>
+        <el-table-column
+            prop="os"
+            label="操作系统">
         </el-table-column>
         <el-table-column
             prop="excuteTime"
-            label="耗时" sortable>
+            label="耗时" sortable width="50" align="center">
         </el-table-column>
         <el-table-column
             prop="createTime"
@@ -190,5 +207,10 @@ export default {
 
 .el-pagination {
   margin-top: 1rem;
+}
+
+.item {
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
 }
 </style>
