@@ -1,7 +1,15 @@
 <template>
   <div>
     <el-card shadow="hover">
-
+      <el-row :gutter="20">
+        <!--搜索-->
+        <el-col :span="8">
+          <el-input placeholder="请输入考勤信息进行搜索" v-model="queryForm.query" clearable
+                    @keyup.enter.native="queryAttendance">
+            <el-button slot="append" icon="el-icon-search" @click="queryAttendance"></el-button>
+          </el-input>
+        </el-col>
+      </el-row>
       <el-table stripe
                 border
                 ref="roleUser"

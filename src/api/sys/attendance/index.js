@@ -38,9 +38,10 @@ export function deleteAttendance(data) {
         data
     })
 }
-export function getAttendanceRecord() {
+export function getAttendanceRecord(queryForm) {
     return request({
         url: '/sys/attendance/list/record',
         method: 'get',
+        params: queryForm
     })
 }

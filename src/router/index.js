@@ -41,11 +41,6 @@ const routes = [
             title: '系统登录'
         },
         component: () => import('../views/Login')
-    },
-    {
-        path: "/test",
-        name: "Test",
-        component: () => import("../views/Test")
     }
 
 ]
