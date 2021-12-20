@@ -10,6 +10,7 @@
       <el-main>
         <nav-list class="navList" :key="$route.path + 1"></nav-list>
         <router-view/>
+        <el-backtop target=".el-main" right="30" bottom="30"></el-backtop>
       </el-main>
     </el-container>
   </el-container>
