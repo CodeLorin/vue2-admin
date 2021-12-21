@@ -294,7 +294,7 @@ export default {
       this.passwordIcon = 'icon-eye1'
     },
     showForgetPasswordDialog() {
-      this.$message.info('测试忘记密码')
+      this.$message.info('请联系管理员lorin')
     }
   }
 }

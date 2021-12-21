@@ -3,7 +3,7 @@
     <el-card shadow="hover">
       <el-row :gutter="20">
 
-        <el-col :span="4">
+        <el-col :span="6">
           <el-popconfirm
               title="确定要批量下线在线用户吗?"
               @cancel="$message.info('已取消下线')"
@@ -13,6 +13,9 @@
               批量下线
             </el-button>
           </el-popconfirm>
+          <el-button @click="getLogList" type="primary" round icon="el-icon-refresh" size="small" style="margin-left: 5px">刷新</el-button>
+        </el-col>
+        <el-col :span="2">
         </el-col>
       </el-row>
       <el-table stripe
