@@ -18,4 +18,6 @@ npm install --registry=https://registry.npm.taobao.org
 # 启动服务
 npm run serve
 ```
-
+> 界面
+![](https://cdn.jsdelivr.net/gh/codelorin/img/img/202206232039354.png)
+![](https://cdn.jsdelivr.net/gh/codelorin/img/img/202206232040092.png)
