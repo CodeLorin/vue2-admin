@@ -8,3 +8,9 @@ export function login(data) {
         data
     })
 }
+export function captcha(data) {
+    return request({
+        url: '/captcha',
+        method: 'get'
+    })
+}

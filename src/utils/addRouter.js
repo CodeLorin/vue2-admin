@@ -1,4 +1,4 @@
-import {getRouter} from "@/api/router/getRouter";
+import { getRouter } from "@/api/router/getRouter";
 import router from "../router";
 import store from '../store'
 
@@ -10,7 +10,7 @@ export const initMenu = () => {
         store.dispatch('setRouterList', res.data)
     })
 }
-export function refreshMenu(){
+export function refreshMenu() {
     console.log(store.state.menuList)
     handlerTree(store.state.menuList)
 }
